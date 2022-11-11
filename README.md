@@ -11,7 +11,7 @@ I will identify diffrentially expressed genes for pancreatic cancer between peop
 For this analysis, I'll use the TCGA cohort and have identified 185 ht-seq counts files for tumors that fit within my cohort with 135 drinkers and 121 non drinkers and 17 not reported. Within the analysis, I will control for gender.
 
 ## Data
-I will use the data from https://portal.gdc.cancer.gov/repository. Examining clinical data, there are 185 samples out of which 135 are defined as drinkers, 121 are identified as non-drinkers and 17 are not reported. The specific files are available are here 
+I will use the data from https://portal.gdc.cancer.gov/repository. Examining clinical data, there are 185 samples out of which 135 are defined as drinkers, 121 are identified as non-drinkers and 17 are not reported. The specific files are available are here https://github.com/JayMehta-98/Final-Project/blob/0a8f701c885780a8021c06eb029f56343a047f41/Clinical%20Cases
 
 ## Milestone 1
 **Due Date**: Thursday November 11th
