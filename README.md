@@ -21,7 +21,7 @@ https://github.com/JayMehta-98/Final-Project/tree/master/Star%20Count%20Genes
 
 Once the files have been downloaded, run the shell script below on the terminal.
 
-'''
+```
 #!/bin/bash
 
 for f in *.tsv; do
@@ -43,7 +43,7 @@ for j in *_*.txt; do
 rm $j;
 
 done;
-'''
+```
 
 **Known Issues**: The file name for each sample had to be manually changed to their corresponding case id and I had to fish out two files which were extra since I had a 143 cases but had 145 files.
 
