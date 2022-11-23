@@ -15,7 +15,7 @@ I will use the data from https://portal.gdc.cancer.gov/repository. Examining cli
 
 ## Milestone 1
 **Due Date**: Thursday November 22th
-I have downloaded 134 samples from the repository and I have written a script which will read all the files and create a count matrix containing the gene expression for all the samples along with the gene id.
+I have downloaded 134 samples from the repository and I have written a script which will read all the files and create a count matrix containing the gene expression for all the samples along with the gene id. The star count files can be found over here
 
 **Known Issues**: The file name for each sample had to be manually changed to their corresponding case id and I had to fish out two files which were extra since I had a 143 cases but had 145 files.
 
