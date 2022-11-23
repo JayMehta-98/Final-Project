@@ -25,23 +25,17 @@ Once the files have been downloaded, run the shell script below on the terminal.
 #!/bin/bash
 
 for f in *.tsv; do
-
 cat $f | awk '{print $4}' | tail -n+7 > $f"_1".txt;
-
 done;
 
 for i in *_1.txt; do
-
 echo -e "$i" | cut -d "." -f1 | cat - $i > $i"_2".txt;
-
 done;
 
 paste test.txt *_2.txt > testmatrix.tsv
 
 for j in *_*.txt; do
-
 rm $j;
-
 done;
 ```
 
