@@ -42,7 +42,15 @@ done;
 **Known Issues**: The file name for each sample had to be manually changed to their corresponding case id and I had to fish out two files which were extra since I had a 143 cases but had 145 files.
 
 ## Milestone 2
-**An initial completion of vignette.** I will complete an entire first draft of analysis analyzed through the vignette.Data loaded into vignette (through htseq), for seeking feedback. Not all sections in the writing will be completed, but will be final project.
+After preparing the dataset, the major issue I faced was getting the columns of count matrix and rows of column data to match. I had to get rid of the index columns in both the datasets for the vignette to work and to load the data in DESeq 2. I had to modify the vignette to load the data and make it compliant to DESeq2. 
+
+```
+cts <- read.csv('ctssort2.csv', check.names=FALSE , row.names=1)
+coldata <- read.csv("coldatasort3.csv", row.names=1)
+```
+I have ran the analysis and have posted a few plots below.
+
+
 
 ## Deliverable
 **Due Date**: December 3rd
