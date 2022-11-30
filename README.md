@@ -50,6 +50,10 @@ coldata <- read.csv("coldatasort3.csv", row.names=1)
 ```
 I have ran the analysis and have posted a few plots below.
 
+![MA plot](https://user-images.githubusercontent.com/112113115/204729536-f33d1789-70aa-4197-84f2-efd618330fae.png)
+
+
+
 
 
 ## Deliverable
