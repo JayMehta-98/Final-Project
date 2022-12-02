@@ -44,14 +44,38 @@ done;
 ## Milestone 2
 After preparing the dataset, the major issue I faced was getting the columns of count matrix and rows of column data to match. I had to get rid of the index columns in both the datasets for the vignette to work and to load the data in DESeq 2. I had to modify the vignette to load the data and make it compliant to DESeq2.
 
-To match the columns of cts to the rows of col data, I used python to wrangle the data, Please use the script below on Google Colab to get the rows and columns in the same order.
-
-### Run this script on Python
+### To load the dataset on R Studio
 
 ```
 cts <- read.csv('ctssort2.csv', check.names=FALSE , row.names=1)
 coldata <- read.csv("coldatasort3.csv", row.names=1)
 ```
+
+To match the columns of cts to the rows of col data, I used python to wrangle the data, Please use the script below on Google Colab or any python based notebook to get the rows and columns in the same order.
+
+### Run this script on Python
+
+```
+import pandas as pd 
+df1 = pd.read_csv('/path/to/coldata.tsv' , sep='\t')
+df2=df1.sort_values(by=['case_submitter_id'] , ascending=True)
+df3 = df2.set_index("case_submitter_id")
+df3.to_csv("/path/to/coldatasort3.csv")
+```
+
+Check to make sure that columns and rows in cts and coldata are identical. If not, use the script above for cts as well. Alternatively, you can run the code given below on R Studio once you have loaded the data to match the columns and rows of the datasets.
+
+```
+cts <- cts[, rownames(coldata)]
+all(rownames(coldata) == colnames(cts))
+```
+To make sure the data you have loaded is formatted according to DESeq2, run the codes given below and make sure both of them give the output ```TRUE```
+
+```
+all(rownames(coldata) %in% colnames(cts))
+all(rownames(coldata) == colnames(cts))
+```
+
 I have ran the analysis and have posted a few plots below.
 
 ![MA plot](https://user-images.githubusercontent.com/112113115/204729536-f33d1789-70aa-4197-84f2-efd618330fae.png)
