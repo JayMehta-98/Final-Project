@@ -42,7 +42,11 @@ done;
 **Known Issues**: The file name for each sample had to be manually changed to their corresponding case id and I had to fish out two files which were extra since I had a 143 cases but had 145 files.
 
 ## Milestone 2
-After preparing the dataset, the major issue I faced was getting the columns of count matrix and rows of column data to match. I had to get rid of the index columns in both the datasets for the vignette to work and to load the data in DESeq 2. I had to modify the vignette to load the data and make it compliant to DESeq2. 
+After preparing the dataset, the major issue I faced was getting the columns of count matrix and rows of column data to match. I had to get rid of the index columns in both the datasets for the vignette to work and to load the data in DESeq 2. I had to modify the vignette to load the data and make it compliant to DESeq2.
+
+To match the columns of cts to the rows of col data, I used python to wrangle the data, Please use the script below on Google Colab to get the rows and columns in the same order.
+
+### Run this script on Python
 
 ```
 cts <- read.csv('ctssort2.csv', check.names=FALSE , row.names=1)
@@ -60,4 +64,25 @@ I have ran the analysis and have posted a few plots below.
 ## Deliverable
 **Due Date**: December 3rd
 
-A complete repository with clear documentation and description of your analysis and results.
+### Loading the Libraries
+
+Before begining to run the vignette on R Studio, we will have to load a few libraries.
+
+```
+if (!require("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+install.packages("tidyverse")
+library(tidyverse)
+install.packages("readr")
+library(readr)
+library(DESeq2)
+```
+For any package not installed for DESeq2, Please use the following syntax to install them.
+
+```
+BiocManager::install("Package")
+```
+
+### Creating DESeq dataset using Count matrix input method
+
+Please use the vignette used in Milestone 2 to load the count matrix and column data
