@@ -107,6 +107,33 @@ For any package not installed for DESeq2, Please use the following syntax to ins
 BiocManager::install("Package")
 ```
 
-### Creating DESeq dataset using Count matrix input method
+### Creating DESeq data object using Count matrix input method
 
-Please use the vignette used in Milestone 2 to load the count matrix and column data
+Please use the vignette used in Milestone 2 to load the count matrix and column data. Once the data is loaded, use the code provided below to make the DESeq2 dataset.
+
+```
+coldata[coldata=="Not"] <- "No"
+coldata$condition <- factor(coldata$alcohol_history)
+
+dds <- DESeqDataSetFromMatrix(countData = cts,
+                              colData = coldata,
+                              design = ~ condition)
+                              
+dds
+```
+
+**Output**
+```
+class: DESeqDataSet 
+dim: 60660 143 
+metadata(1): version
+assays(1): counts
+rownames(60660): ENSG00000000003.15 ENSG00000000005.6 ...
+  ENSG00000288674.1 ENSG00000288675.1
+rowData names(0):
+colnames(143): TCGA-2J-AAB6 TCGA-2J-AAB8 ... TCGA-YY-A8LH TCGA-Z5-AAPL
+colData names(2): alcohol_history condition
+```
+
+### Pre filtering
+This step is done to reduce the memory size of the dds data object, and increase the speed of the transformation and testing functions within DESeq2. It can also improve visualizations, as features with no information for differential expression are not plotted. Here we perform a minimal pre-filtering to keep only rows that have at least 10 reads total. 
