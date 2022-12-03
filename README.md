@@ -249,3 +249,20 @@ plotMA(resLFC, ylim=c(-5,5))
 ```
 ![MA Plot 2](https://user-images.githubusercontent.com/112113115/205462312-0a6e4f0d-0f81-4d28-b5d3-4fc599676b06.png)
 
+### Plot Counts
+
+To examine the counts of reads for a single gene across the groups, we use plot counts.
+```
+plotCounts(dds, gene=which.min(res$padj), intgroup="alcohol_history")
+```
+**For customized plotting**- an argument returnData specifies that the function should only return a data.frame for plotting with ggplot.
+```
+d <- plotCounts(dds, gene=which.min(res$padj), intgroup="alcohol_history", 
+                returnData=TRUE)
+install.packages("ggplot2")
+library("ggplot2")
+ggplot(d, aes(x=alcohol_history, y=count)) + 
+  geom_point(position=position_jitter(w=0.1,h=0)) + 
+  scale_y_log10(breaks=c(25,100,400))
+  ```
+  
