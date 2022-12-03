@@ -76,15 +76,6 @@ all(rownames(coldata) %in% colnames(cts))
 all(rownames(coldata) == colnames(cts))
 ```
 
-I have ran the analysis and have posted a few plots below.
-
-![MA plot](https://user-images.githubusercontent.com/112113115/204729536-f33d1789-70aa-4197-84f2-efd618330fae.png)
-
-
-![MA plot 2](https://user-images.githubusercontent.com/112113115/204729700-6a4c301e-1f8c-4246-b5ed-a1c512b6b9b7.png)
-
-
-
 ## Deliverable
 **Due Date**: December 3rd
 
@@ -232,4 +223,5 @@ plotMA(res, ylim=c(-2,2))
 ```
 plotMA(resLFC, ylim=c(-5,5))
 ```
+![MA Plot 2](https://user-images.githubusercontent.com/112113115/205462312-0a6e4f0d-0f81-4d28-b5d3-4fc599676b06.png)
 
