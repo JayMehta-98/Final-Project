@@ -281,4 +281,12 @@ ntd <- normTransform(dds)
 meanSdPlot(assay(ntd))
 ```
 ![Rplot](https://user-images.githubusercontent.com/112113115/205465131-cd5718aa-684e-4c95-aa1e-f1ba39f32580.png)
+```
+meanSdPlot(assay(vsd))
+```
+
+```
+meanSdPlot(assay(rld))
+```
+
 
