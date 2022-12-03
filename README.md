@@ -192,3 +192,40 @@ ENSG00000288675.1   29.090789       0.283183  0.139729   2.026655   0.0426977  0
 ```
 res <- results(dds, name="alcohol_history_Yes_vs_No")
 ```
+## Log fold change shrinkage for visualization and ranking
+Shrinkage of effect size is useful for visualization and ranking of genes. To shrink the LFC, we pass the dds object to the function lfcShrink using apeglm method.
+```
+resultsNames(dds)
+BiocManager::install("apeglm")
+library("apeglm")
+resLFC <- lfcShrink(dds, coef="alcohol_history_Yes_vs_No", type="apeglm")
+resLFC
+```
+**Output**
+```
+log2 fold change (MAP): alcohol history Yes vs No 
+Wald test p-value: alcohol history Yes vs No 
+DataFrame with 46086 rows and 5 columns
+                     baseMean log2FoldChange      lfcSE      pvalue      padj
+                    <numeric>      <numeric>  <numeric>   <numeric> <numeric>
+ENSG00000000003.15  1855.2253    1.48507e-05 0.00144253 0.396283720  0.737160
+ENSG00000000005.6     13.4887   -9.50690e-06 0.00144270 0.000023003  0.012106
+ENSG00000000419.13  1426.9202    1.52006e-04 0.00144638 0.971306743  0.992380
+ENSG00000000457.14   717.0735    2.29001e-05 0.00144254 0.388782335  0.731776
+ENSG00000000460.17   222.9388   -2.25623e-05 0.00144259 0.341169698  0.696882
+...                       ...            ...        ...         ...       ...
+ENSG00000288667.1    0.198414    9.37736e-07 0.00144269   0.7593177        NA
+ENSG00000288669.1    0.141307   -1.29785e-06 0.00144269   0.6806281        NA
+ENSG00000288670.1  219.037515    1.82277e-05 0.00144258   0.0966959  0.432746
+ENSG00000288674.1    5.198035    1.15593e-05 0.00144267   0.0542439  0.353417
+ENSG00000288675.1   29.090789    2.03537e-05 0.00144269   0.0426977  0.324511
+```
+
+## Results
+
+### MA Plot
+```
+plotMA(res, ylim=c(-2,2))
+```
+
+![MA plot](https://user-images.githubusercontent.com/112113115/204729536-f33d1789-70aa-4197-84f2-efd618330fae.png)
