@@ -288,5 +288,6 @@ meanSdPlot(assay(vsd))
 ```
 meanSdPlot(assay(rld))
 ```
+![meansd rld](https://user-images.githubusercontent.com/112113115/205467052-d69b5747-ffec-4df7-89ee-670f372976cd.png)
 
 
