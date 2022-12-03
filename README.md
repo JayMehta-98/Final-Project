@@ -211,7 +211,28 @@ ENSG00000288670.1  219.037515    1.82277e-05 0.00144258   0.0966959  0.432746
 ENSG00000288674.1    5.198035    1.15593e-05 0.00144267   0.0542439  0.353417
 ENSG00000288675.1   29.090789    2.03537e-05 0.00144269   0.0426977  0.324511
 ```
+### p-values and adjusted p-values
 
+```
+resOrdered <- res[order(res$pvalue),]
+summary(res)
+```
+** Output
+```
+out of 46079 with nonzero total read count
+adjusted p-value < 0.1
+LFC > 0 (up)       : 432, 0.94%
+LFC < 0 (down)     : 136, 0.3%
+outliers [1]       : 0, 0%
+low counts [2]     : 16088, 35%
+(mean count < 1)
+```
+To check how many adjusted p-values were less than 0.1, run
+```
+sum(res$padj < 0.1, na.rm=TRUE) 
+```
+** Output**
+``` 568```
 ## Results
 
 ### MA Plot
