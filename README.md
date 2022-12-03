@@ -137,3 +137,21 @@ colData names(2): alcohol_history condition
 
 ### Pre filtering
 This step is done to reduce the memory size of the dds data object, and increase the speed of the transformation and testing functions within DESeq2. It can also improve visualizations, as features with no information for differential expression are not plotted. Here we perform a minimal pre-filtering to keep only rows that have at least 10 reads total. 
+
+```
+keep <- rowSums(counts(dds)) >= 10
+dds <- dds[keep,]
+```
+**Output**
+```
+class: DESeqDataSet 
+dim: 46086 143 
+metadata(1): version
+assays(6): counts mu ... replaceCounts replaceCooks
+rownames(46086): ENSG00000000003.15 ENSG00000000005.6 ...
+  ENSG00000288674.1 ENSG00000288675.1
+rowData names(23): baseMean baseVar ... maxCooks replace
+colnames(143): TCGA-2J-AAB6 TCGA-2J-AAB8 ... TCGA-YY-A8LH TCGA-Z5-AAPL
+colData names(3): alcohol_history sizeFactor replaceable
+```
+As you notice, the rownames reduce from 60660 to 46086.
