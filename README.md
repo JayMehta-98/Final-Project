@@ -265,4 +265,4 @@ ggplot(d, aes(x=alcohol_history, y=count)) +
   geom_point(position=position_jitter(w=0.1,h=0)) + 
   scale_y_log10(breaks=c(25,100,400))
   ```
-  
+  ![GGplot cust](https://user-images.githubusercontent.com/112113115/205464809-04ba625f-8707-4c33-bba6-76cffa729858.png)
