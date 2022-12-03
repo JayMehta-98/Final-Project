@@ -267,9 +267,16 @@ ggplot(d, aes(x=alcohol_history, y=count)) +
   ```
   ![GGplot cust](https://user-images.githubusercontent.com/112113115/205464809-04ba625f-8707-4c33-bba6-76cffa729858.png)
   
-  ### Extracting transformed values
+### Extracting transformed values
 ```
 vsd <- vst(dds, blind=FALSE)
 rld <- rlog(dds, blind=FALSE)
 head(assay(vsd), 3)
 ```
+
+### Effects of transformations on the variance
+```
+ntd <- normTransform(dds)
+meanSdPlot(assay(ntd))
+```
+
