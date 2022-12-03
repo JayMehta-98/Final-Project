@@ -221,6 +221,7 @@ plotMA(res, ylim=c(-2,2))
 ![MA plot](https://user-images.githubusercontent.com/112113115/204729536-f33d1789-70aa-4197-84f2-efd618330fae.png)
 
 ```
+# Shrink data
 plotMA(resLFC, ylim=c(-5,5))
 ```
 ![MA Plot 2](https://user-images.githubusercontent.com/112113115/205462312-0a6e4f0d-0f81-4d28-b5d3-4fc599676b06.png)
