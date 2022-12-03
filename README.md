@@ -227,5 +227,9 @@ ENSG00000288675.1   29.090789    2.03537e-05 0.00144269   0.0426977  0.324511
 ```
 plotMA(res, ylim=c(-2,2))
 ```
-
 ![MA plot](https://user-images.githubusercontent.com/112113115/204729536-f33d1789-70aa-4197-84f2-efd618330fae.png)
+
+```
+plotMA(resLFC, ylim=c(-5,5))
+```
+
