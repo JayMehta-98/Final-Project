@@ -163,4 +163,10 @@ As you notice, the rownames reduce from 60660 to 46086.
  ```
  
  ### Differential expression analysis
+ Results tables are generated using the function results, which extracts a results table with log2 fold changes, p values and adjusted p values. 
+```
+dds <- DESeq(dds)
+res <- results(dds)
+res
+```
  
