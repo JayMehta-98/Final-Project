@@ -155,3 +155,12 @@ colnames(143): TCGA-2J-AAB6 TCGA-2J-AAB8 ... TCGA-YY-A8LH TCGA-Z5-AAPL
 colData names(3): alcohol_history sizeFactor replaceable
 ```
 As you notice, the rownames reduce from 60660 to 46086.
+
+###  Note on factor levels
+ To explicitly set the factors levels, follow the code below rather than letting R choose the factor level alphabetically.
+ ```
+ dds$alcohol_history <- factor(dds$alcohol_history, levels = c("No","Yes"))
+ ```
+ 
+ ### Differential expression analysis
+ 
