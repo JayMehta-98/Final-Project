@@ -188,4 +188,7 @@ ENSG00000288670.1  219.037515       0.154180  0.092819   1.661087   0.0966959  0
 ENSG00000288674.1    5.198035       0.326996  0.169878   1.924884   0.0542439  0.353417
 ENSG00000288675.1   29.090789       0.283183  0.139729   2.026655   0.0426977  0.324511
 ```
- 
+**Note** - We can specify the coefficient or contrast we want to build a results table for, by using the following command.
+```
+res <- results(dds, name="alcohol_history_Yes_vs_No")
+```
