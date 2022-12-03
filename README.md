@@ -217,7 +217,7 @@ ENSG00000288675.1   29.090789    2.03537e-05 0.00144269   0.0426977  0.324511
 resOrdered <- res[order(res$pvalue),]
 summary(res)
 ```
-** Output
+**Output**
 ```
 out of 46079 with nonzero total read count
 adjusted p-value < 0.1
@@ -231,8 +231,10 @@ To check how many adjusted p-values were less than 0.1, run
 ```
 sum(res$padj < 0.1, na.rm=TRUE) 
 ```
-** Output**
-``` 568```
+**Output**
+``` 
+# 568
+```
 ## Results
 
 ### MA Plot
