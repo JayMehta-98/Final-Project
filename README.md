@@ -50,6 +50,8 @@ done;
 ## Milestone 2
 After preparing the dataset, the major issue I faced was getting the columns of count matrix and rows of column data to match. I had to get rid of the index columns in both the datasets for the vignette to work and to load the data in DESeq 2. I had to modify the vignette to load the data and make it compliant to DESeq2.
 
+You can find the prepared data sets over here - https://github.com/JayMehta-98/Final-Project/tree/master/Matrix%20and%20coldata
+
 ### To load the dataset on R Studio
 
 ```
