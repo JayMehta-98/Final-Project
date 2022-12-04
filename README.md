@@ -116,7 +116,7 @@ coldata$condition <- factor(coldata$alcohol_history)
 
 dds <- DESeqDataSetFromMatrix(countData = cts,
                               colData = coldata,
-                              design = ~ condition)
+                              design = ~ gender + alcohol_history)
                               
 dds
 ```
@@ -127,11 +127,11 @@ class: DESeqDataSet
 dim: 60660 143 
 metadata(1): version
 assays(1): counts
-rownames(60660): ENSG00000000003.15 ENSG00000000005.6 ...
-  ENSG00000288674.1 ENSG00000288675.1
+rownames(60660): ENSG00000000003.15 ENSG00000000005.6 ... ENSG00000288674.1
+  ENSG00000288675.1
 rowData names(0):
 colnames(143): TCGA-2J-AAB6 TCGA-2J-AAB8 ... TCGA-YY-A8LH TCGA-Z5-AAPL
-colData names(2): alcohol_history condition
+colData names(2): alcohol_history gender
 ```
 
 ### Pre filtering
@@ -140,18 +140,19 @@ This step is done to reduce the memory size of the dds data object, and increase
 ```
 keep <- rowSums(counts(dds)) >= 10
 dds <- dds[keep,]
+dds
 ```
 **Output**
 ```
 class: DESeqDataSet 
 dim: 46086 143 
 metadata(1): version
-assays(6): counts mu ... replaceCounts replaceCooks
-rownames(46086): ENSG00000000003.15 ENSG00000000005.6 ...
-  ENSG00000288674.1 ENSG00000288675.1
-rowData names(23): baseMean baseVar ... maxCooks replace
+assays(1): counts
+rownames(46086): ENSG00000000003.15 ENSG00000000005.6 ... ENSG00000288674.1
+  ENSG00000288675.1
+rowData names(0):
 colnames(143): TCGA-2J-AAB6 TCGA-2J-AAB8 ... TCGA-YY-A8LH TCGA-Z5-AAPL
-colData names(3): alcohol_history sizeFactor replaceable
+colData names(2): alcohol_history gender
 ```
 As you notice, the rownames reduce from 60660 to 46086.
 
@@ -173,19 +174,32 @@ res
 log2 fold change (MLE): alcohol history Yes vs No 
 Wald test p-value: alcohol history Yes vs No 
 DataFrame with 46086 rows and 6 columns
-                     baseMean log2FoldChange     lfcSE       stat      pvalue      padj
-                    <numeric>      <numeric> <numeric>  <numeric>   <numeric> <numeric>
-ENSG00000000003.15  1855.2253     0.07236326 0.0853062  0.8482770 0.396283720  0.737160
-ENSG00000000005.6     13.4887    -1.89301102 0.4471450 -4.2335508 0.000023003  0.012106
-ENSG00000000419.13  1426.9202     0.00235198 0.0653884  0.0359694 0.971306743  0.992380
-ENSG00000000457.14   717.0735    -0.06781630 0.0786889 -0.8618277 0.388782335  0.731776
-ENSG00000000460.17   222.9388     0.08262278 0.0868017  0.9518566 0.341169698  0.696882
-...                       ...            ...       ...        ...         ...       ...
-ENSG00000288667.1    0.198414       0.248522  0.811166   0.306377   0.7593177        NA
-ENSG00000288669.1    0.141307      -0.350842  0.852374  -0.411606   0.6806281        NA
-ENSG00000288670.1  219.037515       0.154180  0.092819   1.661087   0.0966959  0.432746
-ENSG00000288674.1    5.198035       0.326996  0.169878   1.924884   0.0542439  0.353417
-ENSG00000288675.1   29.090789       0.283183  0.139729   2.026655   0.0426977  0.324511
+                     baseMean log2FoldChange     lfcSE       stat      pvalue
+                    <numeric>      <numeric> <numeric>  <numeric>   <numeric>
+ENSG00000000003.15  1855.2253     0.07624090 0.0858040  0.8885473 3.74246e-01
+ENSG00000000005.6     13.4887    -1.85070266 0.4406193 -4.2002304 2.66644e-05
+ENSG00000000419.13  1426.9202     0.00543541 0.0657004  0.0827303 9.34066e-01
+ENSG00000000457.14   717.0735    -0.08154333 0.0781599 -1.0432891 2.96814e-01
+ENSG00000000460.17   222.9388     0.08214938 0.0873735  0.9402095 3.47110e-01
+...                       ...            ...       ...        ...         ...
+ENSG00000288667.1    0.198414       0.247456 0.8333935   0.296925   0.7665236
+ENSG00000288669.1    0.141307      -0.362868 0.8765822  -0.413957   0.6789053
+ENSG00000288670.1  219.037515       0.144392 0.0912022   1.583208   0.1133740
+ENSG00000288674.1    5.198035       0.306895 0.1700604   1.804621   0.0711340
+ENSG00000288675.1   29.090789       0.299778 0.1401010   2.139731   0.0323765
+                        padj
+                   <numeric>
+ENSG00000000003.15 0.7096810
+ENSG00000000005.6  0.0137437
+ENSG00000000419.13 0.9795046
+ENSG00000000457.14 0.6540050
+ENSG00000000460.17 0.6903789
+...                      ...
+ENSG00000288667.1         NA
+ENSG00000288669.1         NA
+ENSG00000288670.1   0.452076
+ENSG00000288674.1   0.376282
+ENSG00000288675.1   0.283922
 ```
 **Note** - We can specify the coefficient or contrast we want to build a results table for, by using the following command.
 ```
@@ -207,17 +221,17 @@ Wald test p-value: alcohol history Yes vs No
 DataFrame with 46086 rows and 5 columns
                      baseMean log2FoldChange      lfcSE      pvalue      padj
                     <numeric>      <numeric>  <numeric>   <numeric> <numeric>
-ENSG00000000003.15  1855.2253    1.48507e-05 0.00144253 0.396283720  0.737160
-ENSG00000000005.6     13.4887   -9.50690e-06 0.00144270 0.000023003  0.012106
-ENSG00000000419.13  1426.9202    1.52006e-04 0.00144638 0.971306743  0.992380
-ENSG00000000457.14   717.0735    2.29001e-05 0.00144254 0.388782335  0.731776
-ENSG00000000460.17   222.9388   -2.25623e-05 0.00144259 0.341169698  0.696882
+ENSG00000000003.15  1855.2253    5.07141e-05 0.00144294 3.74246e-01 0.7096810
+ENSG00000000005.6     13.4887   -1.61255e+00 0.47153732 2.66644e-05 0.0137437
+ENSG00000000419.13  1426.9202    1.32527e-06 0.00144235 9.34066e-01 0.9795046
+ENSG00000000457.14   717.0735   -1.39188e-05 0.00144248 2.96814e-01 0.6540050
+ENSG00000000460.17   222.9388    5.76564e-05 0.00144307 3.47110e-01 0.6903789
 ...                       ...            ...        ...         ...       ...
-ENSG00000288667.1    0.198414    9.37736e-07 0.00144269   0.7593177        NA
-ENSG00000288669.1    0.141307   -1.29785e-06 0.00144269   0.6806281        NA
-ENSG00000288670.1  219.037515    1.82277e-05 0.00144258   0.0966959  0.432746
-ENSG00000288674.1    5.198035    1.15593e-05 0.00144267   0.0542439  0.353417
-ENSG00000288675.1   29.090789    2.03537e-05 0.00144269   0.0426977  0.324511
+ENSG00000288667.1    0.198414    9.56677e-07 0.00144269   0.7665236        NA
+ENSG00000288669.1    0.141307   -1.40886e-06 0.00144269   0.6789053        NA
+ENSG00000288670.1  219.037515    1.80254e-05 0.00144257   0.1133740  0.452076
+ENSG00000288674.1    5.198035    1.05446e-05 0.00144266   0.0711340  0.376282
+ENSG00000288675.1   29.090789    1.24697e-05 0.00144265   0.0323765  0.283922
 ```
 ### p-values and adjusted p-values
 
@@ -229,11 +243,13 @@ summary(res)
 ```
 out of 46079 with nonzero total read count
 adjusted p-value < 0.1
-LFC > 0 (up)       : 432, 0.94%
-LFC < 0 (down)     : 136, 0.3%
+LFC > 0 (up)       : 406, 0.88%
+LFC < 0 (down)     : 127, 0.28%
 outliers [1]       : 0, 0%
-low counts [2]     : 16088, 35%
-(mean count < 1)
+low counts [2]     : 18768, 41%
+(mean count < 2)
+[1] see 'cooksCutoff' argument of ?results
+[2] see 'independentFiltering' argument of ?results
 ```
 To check how many adjusted p-values were less than 0.1, run
 ```
@@ -241,7 +257,7 @@ sum(res$padj < 0.1, na.rm=TRUE)
 ```
 **Output**
 ``` 
-# 568
+# 533
 ```
 ## Results
 
