@@ -255,7 +255,7 @@ To examine the counts of reads for a single gene across the groups, we use plot 
 ```
 plotCounts(dds, gene=which.min(res$padj), intgroup="alcohol_history")
 ```
-![Plot count](https://user-images.githubusercontent.com/112113115/205466740-589b8a13-2b87-4527-b2c0-d4a3cd84953f.png)
+![plotcount gender](https://user-images.githubusercontent.com/112113115/205469874-b3385e74-bbe9-448a-b3c2-8ccc9afefae7.png)
 **For customized plotting**- an argument returnData specifies that the function should only return a data.frame for plotting with ggplot.
 ```
 d <- plotCounts(dds, gene=which.min(res$padj), intgroup="alcohol_history", 
