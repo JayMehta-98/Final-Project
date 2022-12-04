@@ -305,4 +305,10 @@ pheatmap(assay(ntd)[select,], cluster_rows=FALSE, show_rownames=FALSE,
          cluster_cols=FALSE, annotation_col=df)
 ```
 ![heatmap1](https://user-images.githubusercontent.com/112113115/205470266-c4295782-c94f-4cd8-b3af-d83f7dcfbec1.png)
+```
+pheatmap(assay(vsd)[select,], cluster_rows=FALSE, show_rownames=FALSE,
+         cluster_cols=FALSE, annotation_col=df)
+```
+![heatmap vsd](https://user-images.githubusercontent.com/112113115/205470360-cee8f8ea-2616-492d-93bb-bd9adb052caf.png)
+
 
