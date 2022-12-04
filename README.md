@@ -338,6 +338,7 @@ pheatmap(assay(vsd)[select,], cluster_rows=FALSE, show_rownames=FALSE,
 pheatmap(assay(rld)[select,], cluster_rows=FALSE, show_rownames=FALSE,
          cluster_cols=FALSE, annotation_col=df)
 ```
+![heatmap rlt](https://user-images.githubusercontent.com/112113115/205479289-4cf6ecb6-a877-4cb7-92ee-3995f4c7bb54.png)
 
 **Heatmap of the sample-to-sample distances**
 ```
