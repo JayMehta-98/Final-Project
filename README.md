@@ -334,5 +334,5 @@ pheatmap(sampleDistMatrix,
 ```
 plotPCA(vsd, intgroup=c("alcohol_history", "gender"))
 ```
-
+![PCA](https://user-images.githubusercontent.com/112113115/205470941-b0ac4465-f02b-43d1-a3a4-765bbc3b2315.png)
 
