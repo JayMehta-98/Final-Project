@@ -290,7 +290,18 @@ meanSdPlot(assay(rld))
 ```
 ![meansd rld](https://user-images.githubusercontent.com/112113115/205467052-d69b5747-ffec-4df7-89ee-670f372976cd.png)
 
+### Data quality assessment by sample clustering and visualization
+```
+select <- order(rowMeans(counts(dds,normalized=TRUE)),
+                decreasing=TRUE)[1:20]
+df <- as.data.frame(colData(dds)[,c("alcohol_history","gender")])
+```
+
 ### Heatmap of the count matrix
 ```
 BiocManager::install("pheatmap")
 library("pheatmap")
+pheatmap(assay(ntd)[select,], cluster_rows=FALSE, show_rownames=FALSE,
+         cluster_cols=FALSE, annotation_col=df)
+```
+
