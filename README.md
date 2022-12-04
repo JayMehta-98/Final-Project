@@ -328,5 +328,5 @@ pheatmap(sampleDistMatrix,
          clustering_distance_cols=sampleDists,
          col=colors)
 ```
-
+![sts heatmap](https://user-images.githubusercontent.com/112113115/205470746-06543abb-80ca-46cc-adf2-fc9dfb9fbda5.png)
 
