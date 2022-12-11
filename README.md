@@ -87,6 +87,8 @@ all(rownames(coldata) == colnames(cts))
 ## Deliverable
 **Due Date**: December 3rd
 
+**Link to csv file with HUGO names** - https://drive.google.com/drive/folders/1Sx3c0lasWT9LqI1duLsf06RjpS0RKyDi?usp=sharing
+
 ### Loading the Libraries
 
 Before begining to run the vignette on R Studio, we will have to load a few libraries.
